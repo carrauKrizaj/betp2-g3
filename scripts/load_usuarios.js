@@ -1,3 +1,7 @@
+db = db.getSiblingDB('test');
+db.usuarios.drop();
+db.usuarios.insertMany(usuarios);
+
 const usuarios = 
 [
     {
