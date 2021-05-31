@@ -26,4 +26,27 @@ async function addUsuario(usuario){
     return result;
 };
 
-module.exports = {getUsuarios, getUsuario, addUsuario};
+async function updateUsuario (usuario){
+    const clientmongo = await connection.getConnection();
+    const query = {_id: new ObjectId(usuario._id)};
+    const newValues = {$set:{
+        nombre: usuario.nombre,
+        apellido: usuario.apellido,
+        email: usuario.email
+        }
+    };
+    const result = await clientmongo.db('test')
+                                    .collection('usuarios')
+                                    .updateOne(query,newValues);
+    return result;
+};
+
+async function deleteUsuario (id){
+    const clientmongo = await connection.getConnection();
+    const result = await clientmongo.db('test')
+                                    .collection('usuarios')
+                                    .deleteOne({_id: new ObjectId(id)});
+    return result;
+};
+
+module.exports = {getUsuarios, getUsuario, addUsuario, updateUsuario, deleteUsuario};

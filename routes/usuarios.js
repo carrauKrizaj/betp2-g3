@@ -17,7 +17,7 @@ router.post('/', async (req, res)=>{
     let usuario = req.body;
     
     usuario = await dataUsuarios.addUsuario(usuario);
-    res.json(usuario);
+    res.json(usuario.ops[0]);
 });
 
 router.put('/:id', async (req, res)=>{
@@ -26,13 +26,14 @@ router.put('/:id', async (req, res)=>{
     let usuario = req.body;
     usuario._id = id;
     usuario = await dataUsuarios.updateUsuario(usuario);
-    res.json(usuario);
+    res.json(await dataUsuarios.getUsuario(id));
 });
 
 router.delete('/:id', async(req, res) =>{
     let id = req.params.id;
+    let usuario = await dataUsuarios.getUsuario(id);
     await dataUsuarios.deleteUsuario(id);
-    res.send('Usuario eliminado') ;
+    res.json(usuario);
 });
 
 module.exports = router;
