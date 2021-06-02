@@ -29,7 +29,7 @@ router.post('/login', async (req, res)=>{
 router.post('/', async (req, res)=>{
     try {
         
-        let emailEncontrado = await dataUsuarios.buscarEmail(req.body.email); //busca si existe el email
+        let emailEncontrado = await dataUsuarios.buscarEmail(req.body.email); //busca si existe el mail
 
         if(!emailEncontrado){  //si esta vacio, no encontro nada
             usuario = await dataUsuarios.addUsuario(usuario);
@@ -41,9 +41,9 @@ router.post('/', async (req, res)=>{
     }
 
 });
-
-router.put('/:id', async (req, res)=>{
-    //validacion pendiente  Consultar tema ID 
+//Consultar lo de la ID y getUsuario
+router.put('/:id', async (req, res)=>{ 
+    //validacion pendiente 
     let id = req.params.id;
     let usuario = req.body;
     usuario._id = id;
