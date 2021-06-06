@@ -20,8 +20,9 @@ async function addUsuario(usuario){
 };
 
 async function buscarEmail(email){
+    const clientmongo = await connection.getConnection();
     
-    const usuario = await connectiondb.db('test')
+    const usuario = await clientmongo.db('test')
                             .collection('usuarios')
                             .findOne({email:email});
 
@@ -34,9 +35,9 @@ async function buscarEmail(email){
 }
 
 async function buscarUsuario(email, contraseña){
-    const connectiondb = await connection.getConnection();
+    const clientmongo = await connection.getConnection();
 
-    const usuario = await connectiondb.db('test')
+    const usuario = await clientmongo.db('test')
                             .collection('usuarios')
                             .findOne({email:email});
     console.log('Usuario', usuario);
