@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const dataResenias = require('../data/crud_resenias');
 
-router.post('/add-review', async (req, res)=>{
+router.post('/', async (req, res)=>{
     //Averiguar como hacer la validacion correctamente
     let review = req.body;
 
@@ -10,13 +10,13 @@ router.post('/add-review', async (req, res)=>{
     res.json(review);
 });
 
-router.get('/reviews', async (req, res)=>{
+router.get('/', async (req, res)=>{
     const reviews = await dataResenias.getResenias();
     res.json(reviews);
 });
 
-router.get('/reviews/:id', async (req, res)=>{
-    const review = await dataResenias.getResenia(req.param.id);
+router.get('/:id', async (req, res)=>{
+    const review = await dataResenias.getResenia(req.params.id);
     res.json(review);
 });
 
