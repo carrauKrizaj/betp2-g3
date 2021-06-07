@@ -34,14 +34,14 @@ que deja dicho usuario.
 
 #Endpoints de la API
 
-GET - Home: '/' - (http:/localhost:3000).
-GET - Buscador usuarios: '/usuarios/:nombre' - (http:/localhost:3000/':nombre').
-POST - Login: '/usuarios/login' - (http:/localhost:3000/login).
-POST - SignIn: '/usuarios/signin' - (http:/localhost:3000/signin).
-GET - Reseñas: '/api/reviews' - (http:/localhost:3000/reviews).
-GET - Buscador reseña: '/api/reviews/:id' - (http:/localhost:3000/reviews/':id').
-POST - Agregar reseña: '/api/reviews' - (http:/localhost:3000/reviews/).
-GET - Busca reseñas por usuario: '/api/reviews/user-reviews/:id' - (http:/localhost:3000/reviews/user-reviews/':id').
-GET - Busca reseñas por titulo: '/api/reviews/title-reviews/:id' - (http:/localhost:3000/reviews/title-reviews/':id').
-PUT - Modificar reseña: '/api/reviews/:id' - (http:/localhost:3000/reviews/':id').
-DELETE - Borrar reseña: '/api/reviews/:id' - (http:/localhost:3000/reviews/':id').
+- GET: '/' (http:/localhost:3000); Home.
+- GET: '/usuarios/:nombre' (http:/localhost:3000/':nombre'); Buscador usuarios. 
+- POST: '/usuarios/login' (http:/localhost:3000/login); Login.
+- POST: '/usuarios/signin' (http:/localhost:3000/signin); SignIn.
+- GET: '/api/reviews' (http:/localhost:3000/reviews); Reseñas.
+- GET: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Buscador reseña.
+- POST: '/api/reviews' (http:/localhost:3000/reviews/); Agregar reseña.
+- GET: '/api/reviews/user-reviews/:id' (http:/localhost:3000/reviews/user-reviews/':id'); Busca reseñas por usuario.
+- GET: '/api/reviews/title-reviews/:id' (http:/localhost:3000/reviews/title-reviews/':id'); Busca reseñas por titulo.
+- PUT: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Modificar reseña.
+- DELETE: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Borrar reseña.
