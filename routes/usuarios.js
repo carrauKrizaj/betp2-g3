@@ -2,18 +2,21 @@ const express = require('express');
 const router = express.Router();
 const dataUsuarios = require('../data/crud_usuarios');
 
-/*
-router.get('/', async function(req, res) {
-  const usuarios = await dataUsuarios.getUsuarios();
+
+//buscador por nombre de usuario = funcionalidad de la API; un usuario puede seguir a otros usuarios
+router.get('/:nombre', async function(req, res) {
+  const usuarios = await dataUsuarios.getUsuarios(req.params.nombre);
   res.json(usuarios);
 });
 
+/*
 router.get('/:id', async (req, res)=>{
     const usuario = await dataUsuarios.getUsuario(req.params.id);
     res.json(usuario);
 });
 */
 
+//LOGIN
 router.post('/login', async (req, res)=>{
     try {
       const usuario = await dataUsuarios.buscarUsuario(req.body.email, req.body.contraseña);
@@ -26,7 +29,8 @@ router.post('/login', async (req, res)=>{
     }
   });
 
-router.post('/', async (req, res)=>{
+// SIGNIN ?? revisar: este método es para registrarse a la página.
+router.post('/signin', async (req, res)=>{
     try {
         
         let emailEncontrado = await dataUsuarios.buscarEmail(req.body.email); //busca si existe el mail
@@ -41,6 +45,7 @@ router.post('/', async (req, res)=>{
     }
 
 });
+
 //Consultar lo de la ID y getUsuario
 router.put('/:id', async (req, res)=>{ 
     //validacion pendiente 

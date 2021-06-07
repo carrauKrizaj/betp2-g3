@@ -16,12 +16,32 @@ que deja dicho usuario.
         Buscar Usuarios
         Seguir Usuarios
 
+#Actores/Roles
+
+Usuario
+Moderador (?)
+
+#Entidades principales
+
+Usuarios
+Reviews
+
+#Instrucciones técnicas para la instalación de un entorno de desarrollo
+
+1. Hacer un Fork al repositorio de GitHub: https://github.com/carrauKrizaj/betp2-g3
+2. Clonar el repositorio localmente: no clonar el repo original, sino el que se generó luego del fork en tu propio repo.
+3. Instalar las dependencias; para eso, desde la consola de comando pararse sobre el directorio del repo y ejecutar el comando "npm install".
+
 #Endpoints de la API
 
-//CORREGIR
-
-Página principal:   app.use('/', indexRouter);                  //deberiamos listarla?
-Usuarios:           app.use('/usuarios', usuariosRouter);       //deberiamos listarla?
-Login:              //pendiente
-Reseñas:            //pendiente
-Reseña:             //pendiente
+Home:                        '/'                                (http:/localhost:3000)                                  GET
+Buscador usuarios:           '/usuarios/:nombre'                (http:/localhost:3000/':nombre')                        GET
+Login:                       '/usuarios/login'                  (http:/localhost:3000/login)                            POST
+SignIn:                      '/usuarios/signin'                 (http:/localhost:3000/signin)                           POST
+Reseñas:                     '/api/reviews'                     (http:/localhost:3000/reviews)                          GET
+Buscador reseña:             '/api/reviews/:id'                 (http:/localhost:3000/reviews/':id')                    GET
+Agregar reseña:              '/api/reviews'                     (http:/localhost:3000/reviews/)                         POST
+Busca reseñas por usuario    '/api/reviews/user-reviews/:id'    (http:/localhost:3000/reviews/user-reviews/':id')       GET
+Busca reseñas por usuario    '/api/reviews/title-reviews/:id'   (http:/localhost:3000/reviews/title-reviews/':id')      GET
+Modificar reseña:            '/api/reviews/:id'                 (http:/localhost:3000/reviews/':id')                    PUT
+Borrar reseña:               '/api/reviews/:id'                 (http:/localhost:3000/reviews/':id')                    DELETE

@@ -74,7 +74,17 @@ async function generateJWT(usuario){
     return token;
 }
 
-/*                                               ¿Realmente se puede eliminar un usuario?
+//buscador por nombre de usuario = funcionalidad de la API; un usuario puede seguir a otros usuarios
+async function getUsuarios(nombre){
+    const clientmongo = await connection.getConnection();
+    const usuarios =  await clientmongo.db('test')
+                                       .collection('usuarios')
+                                       .find({nombre: nombre})
+                                       .toArray();
+    return usuarios;
+};
+
+/*                                  ¿Realmente se puede eliminar un usuario?
 
 async function deleteUsuario (id){
     const clientmongo = await connection.getConnection();
@@ -82,15 +92,6 @@ async function deleteUsuario (id){
                                     .collection('usuarios')
                                     .deleteOne({_id: new ObjectId(id)});
     return result;
-};
-
-async function getUsuarios(){
-    const clientmongo = await connection.getConnection();
-    const usuarios =  await clientmongo.db('test')
-                                       .collection('usuarios')
-                                       .find()
-                                       .toArray();
-    return usuarios;
 };
 
 async function getUsuario(id){
@@ -103,4 +104,4 @@ async function getUsuario(id){
 
 */
 
-module.exports = {addUsuario, updateUsuario, buscarUsuario, buscarEmail, generateJWT};
+module.exports = {addUsuario, updateUsuario, buscarUsuario, buscarEmail, generateJWT, getUsuarios};
