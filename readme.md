@@ -1,6 +1,6 @@
 #Descripcion
 
-Una aplicacion para armar listado de las peliculas que queres ver o ya viste y te permite dejarle una puntuacion y reseña. Podes seguir otro usuario si te gustan las reseñas
+Una aplicacion para armar listado de las peliculas y series que queres ver o ya viste y te permite dejarle una puntuacion y reseña. Podes seguir otro usuario si te gustan las reseñas
 que deja dicho usuario.
 
 #Funcionalidades
