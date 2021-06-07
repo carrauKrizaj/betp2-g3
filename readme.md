@@ -34,14 +34,14 @@ Reviews
 
 #Endpoints de la API
 
-Home:                        '/'                                (http:/localhost:3000)                                  GET
-Buscador usuarios:           '/usuarios/:nombre'                (http:/localhost:3000/':nombre')                        GET
-Login:                       '/usuarios/login'                  (http:/localhost:3000/login)                            POST
-SignIn:                      '/usuarios/signin'                 (http:/localhost:3000/signin)                           POST
-Reseñas:                     '/api/reviews'                     (http:/localhost:3000/reviews)                          GET
-Buscador reseña:             '/api/reviews/:id'                 (http:/localhost:3000/reviews/':id')                    GET
-Agregar reseña:              '/api/reviews'                     (http:/localhost:3000/reviews/)                         POST
-Busca reseñas por usuario    '/api/reviews/user-reviews/:id'    (http:/localhost:3000/reviews/user-reviews/':id')       GET
-Busca reseñas por usuario    '/api/reviews/title-reviews/:id'   (http:/localhost:3000/reviews/title-reviews/':id')      GET
-Modificar reseña:            '/api/reviews/:id'                 (http:/localhost:3000/reviews/':id')                    PUT
-Borrar reseña:               '/api/reviews/:id'                 (http:/localhost:3000/reviews/':id')                    DELETE
+GET - Home: '/' - (http:/localhost:3000)
+GET - Buscador usuarios: '/usuarios/:nombre' - (http:/localhost:3000/':nombre')
+POST - Login: '/usuarios/login' - (http:/localhost:3000/login)
+POST - SignIn: '/usuarios/signin' - (http:/localhost:3000/signin)
+GET - Reseñas: '/api/reviews' - (http:/localhost:3000/reviews)
+GET - Buscador reseña: '/api/reviews/:id' - (http:/localhost:3000/reviews/':id')
+POST - Agregar reseña: '/api/reviews' - (http:/localhost:3000/reviews/)
+GET - Busca reseñas por usuario: '/api/reviews/user-reviews/:id' - (http:/localhost:3000/reviews/user-reviews/':id')
+GET - Busca reseñas por titulo: '/api/reviews/title-reviews/:id' - (http:/localhost:3000/reviews/title-reviews/':id')
+PUT - Modificar reseña: '/api/reviews/:id' - (http:/localhost:3000/reviews/':id')
+DELETE - Borrar reseña: '/api/reviews/:id' - (http:/localhost:3000/reviews/':id')
