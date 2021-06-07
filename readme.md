@@ -18,13 +18,13 @@ que deja dicho usuario.
 
 #Actores/Roles
 
-Usuario
-Moderador (?)
+- Usuario
+- Moderador (?)
 
 #Entidades principales
 
-Usuarios
-Reviews
+- Usuarios
+- Reviews
 
 #Instrucciones técnicas para la instalación de un entorno de desarrollo
 
