@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const dataUsuarios = require('../data/crud_usuarios');
-
+const auth = require('../middleware/auth');
 
 //buscador por nombre de usuario = funcionalidad de la API; un usuario puede seguir a otros usuarios
-router.get('/:nombre', async function(req, res) {
-  const usuarios = await dataUsuarios.getUsuarios(req.params.nombre);
-  res.json(usuarios);
+router.get('/:username', async function (req, res) {
+  const usuario = await dataUsuarios.getUsuario(req.params.username);
+  res.json(usuario);
 });
+
+// router.get('/', async function(req, res) {
+//   const usuarios = await dataUsuarios.getUsuarios();
+//   res.json(usuarios);
+// });
 
 /*
 router.get('/:id', async (req, res)=>{
@@ -17,52 +22,61 @@ router.get('/:id', async (req, res)=>{
 */
 
 //LOGIN
-router.post('/login', async (req, res)=>{
-    try {
-      const usuario = await dataUsuarios.buscarUsuario(req.body.email, req.body.contraseña);
-      console.log(usuario);
-      const token = await dataUsuarios.generateJWT(usuario);
-      res.send({usuario, token});
+router.post('/login', async (req, res) => {
+  try {
+    const usuario = await dataUsuarios.buscarUsuario(req.body.email, req.body.password);
+    console.log(usuario);
+    const token = await dataUsuarios.generateJWT(usuario);
+    res.send({ usuario, token });
 
-    } catch (error) {
-      res.status(401).send(error.message);
+  } catch (error) {
+    res.status(401).send(error.message);
+  }
+});
+
+// SIGNUP
+router.post('/signup', async (req, res) => {
+  try {
+    let usuario = req.body;
+    let emailEncontrado = await dataUsuarios.buscarEmail(req.body.email); //busca si existe el mail
+    let userNameEncontrado = await dataUsuarios.buscarUserName(req.body.username);
+
+    if (!emailEncontrado && !userNameEncontrado) {  //si esta vacio, no encontro nada
+      usuario = await dataUsuarios.addUsuario(usuario);
+      res.json(usuario);
     }
-  });
 
-// SIGNIN ?? revisar: este método es para registrarse a la página.
-router.post('/signin', async (req, res)=>{
-    try {
-        
-        let emailEncontrado = await dataUsuarios.buscarEmail(req.body.email); //busca si existe el mail
-
-        if(!emailEncontrado){  //si esta vacio, no encontro nada
-            usuario = await dataUsuarios.addUsuario(usuario);
-            res.json(usuario.ops[0]);
-        }
-
-    } catch (error){ //tira error de email existente
-        res.send(error.message);
-    }
+  } catch (error) { //tira error de email/username existente
+    res.send(error.message);
+  }
 
 });
 
 //Consultar lo de la ID y getUsuario
-router.put('/:id', async (req, res)=>{ 
-    //validacion pendiente 
-    let id = req.params.id;
-    let usuario = req.body;
-    usuario._id = id;
-    usuario = await dataUsuarios.updateUsuario(usuario);
-    res.json(await dataUsuarios.getUsuario(id));
+router.put('/:id', async (req, res) => {
+  //validacion pendiente 
+  let id = req.params.id;
+  let usuario = req.body;
+  usuario._id = id;
+  usuario = await dataUsuarios.updateUsuario(usuario);
+  res.json(await dataUsuarios.getUsuario(id));
 });
 
-/*   ¿Se deberia pode reliminar usuarios?
-router.delete('/:id', async(req, res) =>{
-    let id = req.params.id;
-    let usuario = await dataUsuarios.getUsuario(id);
+//DELETE
+// Solo el mismo usuario o un moderador podria eliminar al usuario
+router.delete('/:id', auth, async (req, res) => {
+  let id = req.params.id;
+  let usuario = await dataUsuarios.getUsuarioId(id);
+
+  if (!usuario) {
+    res.send("ID inexistente");
+  }
+  else {
     await dataUsuarios.deleteUsuario(id);
-    res.json(usuario);
+    res.send("Usuario eliminado");
+  }
+
 });
-*/
+
 
 module.exports = router;

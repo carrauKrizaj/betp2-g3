@@ -1,15 +1,9 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-// esta copiado igual que lo del profe, hay que revisarlo
-
-
 function auth(req, res, next){
     try {
-        //const token = req.header('Token');
         const token = req.header('Authorization').replace('Bearer ', '');
-        //const token = req.header('Authorization');
-        console.log(token);
         jwt.verify(token, process.env.SECRET);
         next();
     } catch (error) {
