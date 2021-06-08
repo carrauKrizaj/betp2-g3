@@ -31,13 +31,14 @@ que deja dicho usuario.
 1. Hacer un Fork al repositorio de GitHub: https://github.com/carrauKrizaj/betp2-g3
 2. Clonar el repositorio localmente: no clonar el repo original, sino el que se generó luego del fork en tu propio repo.
 3. Instalar las dependencias; para eso, desde la consola de comando pararse sobre el directorio del repo y ejecutar el comando "npm install".
+4. Para ejecutar el programa, desde la consola de comando pararse sobre el directorio del repo y ejecutar el comando "npm run devstart".
 
 #Endpoints de la API
 
 - GET: '/' (http:/localhost:3000); Home.
 - GET: '/usuarios/:nombre' (http:/localhost:3000/':nombre'); Buscador usuarios. 
 - POST: '/usuarios/login' (http:/localhost:3000/login); Login.
-- POST: '/usuarios/signin' (http:/localhost:3000/signin); SignIn.
+- POST: '/usuarios/signup' (http:/localhost:3000/signup); Registrarse.
 - GET: '/api/reviews' (http:/localhost:3000/reviews); Reseñas.
 - GET: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Buscador reseña.
 - POST: '/api/reviews' (http:/localhost:3000/reviews/); Agregar reseña.

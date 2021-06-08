@@ -1,15 +1,13 @@
 db = db.getSiblingDB('test');
 const bcrypt = require('bcryptjs');
-db.usuarios.drop();
-db.usuarios.insertMany(usuarios);
-
-const usuarios = 
-[
+db.usuarios.remove( {} );
+db.usuarios.insertMany([
     {
         "nombre": "Pepe",
         "apellido": "Mujica",
         "email": "pepe@altavista.com",
-        "contraseña": bcrypt.hashSync('contraseña1', 8),
+        "username": "user1",
+        "password": bcrypt.hashSync('password1', 8),
         "titulos": 
         [
             
@@ -19,7 +17,8 @@ const usuarios =
         "nombre": "Norberto",
         "apellido": "Napolitano",
         "email": "pappo@blues.com",
-        "contraseña": bcrypt.hashSync('contraseña1', 8),
+        "username": "user2",
+        "password": bcrypt.hashSync('password1', 8),
         "titulos": 
         [
             
@@ -29,7 +28,8 @@ const usuarios =
         "nombre": "Rick",
         "apellido": "Sanchez",
         "email": "wabalaba@dubdub.com",
-        "contraseña": bcrypt.hashSync('contraseña1', 8),
+        "username": "user3",
+        "password": bcrypt.hashSync('password1', 8),
         "titulos": 
         [
             
@@ -39,7 +39,8 @@ const usuarios =
         "nombre": "Pickle",
         "apellido": "Rick",
         "email": "pickle@altavista.com",
-        "contraseña": bcrypt.hashSync('contraseña1', 8),
+        "username": "user4",
+        "password": bcrypt.hashSync('password1', 8),
         "titulos": 
         [
             
@@ -49,7 +50,8 @@ const usuarios =
         "nombre": "Walter",
         "apellido": "White",
         "email": "blue@magic.com",
-        "contraseña": bcrypt.hashSync('contraseña1', 8),
+        "username": "user5",
+        "password": bcrypt.hashSync('password1', 8),
         "titulos": 
         [
             
@@ -59,7 +61,8 @@ const usuarios =
         "nombre": "Manu",
         "apellido": "Ginobilli",
         "email": "manu@spurs.com",
-        "contraseña": bcrypt.hashSync('contraseña1', 8),
+        "username": "user6",
+        "password": bcrypt.hashSync('password1', 8),
         "titulos": 
         [
             
@@ -69,7 +72,8 @@ const usuarios =
         "nombre": "Juan",
         "apellido": "Topo",
         "email": "topo@gmail.com",
-        "contraseña": bcrypt.hashSync('contraseña1', 8),
+        "username": "user7",
+        "password": bcrypt.hashSync('password1', 8),
         "titulos": 
         [
             
@@ -79,7 +83,8 @@ const usuarios =
         "nombre": "Ron",
         "apellido": "Swanson",
         "email": "rons@pawnee.gov",
-        "contraseña": bcrypt.hashSync('contraseña1', 8),
+        "username": "user8",
+        "password": bcrypt.hashSync('password1', 8),
         "titulos": 
         [
             
@@ -89,10 +94,11 @@ const usuarios =
         "nombre": "Groucho",
         "apellido": "Marx",
         "email": "grouchom@spurs.com",
-        "contraseña": bcrypt.hashSync('contraseña1', 8),
+        "username": "user9",
+        "password": bcrypt.hashSync('password1', 8),
         "titulos": 
         [
             
         ]
     }
-];
+]);

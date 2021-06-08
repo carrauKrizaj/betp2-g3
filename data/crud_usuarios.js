@@ -4,10 +4,6 @@ let ObjectId = require('mongodb').ObjectId;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-
-
-//faltaria agregar una verificacion si ya existe ese mail. Consultar al profe donde va
-
 async function addUsuario(usuario){ 
     const clientmongo = await connection.getConnection();
 
@@ -27,14 +23,29 @@ async function buscarEmail(email){
                             .findOne({email:email});
 
     if(usuario){
-        throw new Error('Email ya existente')
+        throw new Error('Email o nombre de usuario ya en uso');
     }
         
-    return usuario
+    return usuario;
 
 }
 
-async function buscarUsuario(email, contraseña){
+async function buscarUserName(username){
+    const clientmongo = await connection.getConnection();
+    
+    const usuario = await clientmongo.db('test')
+                            .collection('usuarios')
+                            .findOne({username:username});
+
+    if(usuario){
+        throw new Error('Email o nombre de usuario ya en uso');
+    }
+        
+    return usuario;
+
+}
+
+async function buscarUsuario(email, password){
     const clientmongo = await connection.getConnection();
 
     const usuario = await clientmongo.db('test')
@@ -45,7 +56,7 @@ async function buscarUsuario(email, contraseña){
         throw new Error('Datos inválidos');
     }
 
-    const isMatch =  bcrypt.compareSync(contraseña, usuario.contraseña);
+    const isMatch =  bcrypt.compareSync(password, usuario.password);
 
     if(!isMatch){
         throw new Error('Datos inválidos');
@@ -60,7 +71,6 @@ async function updateUsuario (usuario){
     const newValues = {$set:{
         nombre: usuario.nombre,
         apellido: usuario.apellido,
-        // email: usuario.email (el email no se deberia poder cambiar)
         }
     };
     const result = await clientmongo.db('test')
@@ -75,14 +85,22 @@ async function generateJWT(usuario){
 }
 
 //buscador por nombre de usuario = funcionalidad de la API; un usuario puede seguir a otros usuarios
-async function getUsuarios(nombre){
+async function getUsuario(username){
     const clientmongo = await connection.getConnection();
-    const usuarios =  await clientmongo.db('test')
+    const usuario =  await clientmongo.db('test')
                                        .collection('usuarios')
-                                       .find({nombre: nombre})
-                                       .toArray();
-    return usuarios;
+                                       .findOne({username: username});
+    return usuario;
 };
+
+// async function getUsuarios(){
+//     const clientmongo = await connection.getConnection();
+//     const usuarios =  await clientmongo.db('test')
+//                                        .collection('usuarios')
+//                                        .find()
+//                                        .toArray();
+//     return usuarios;
+// };
 
 /*                                  ¿Realmente se puede eliminar un usuario?
 
@@ -104,4 +122,4 @@ async function getUsuario(id){
 
 */
 
-module.exports = {addUsuario, updateUsuario, buscarUsuario, buscarEmail, generateJWT, getUsuarios};
+module.exports = {addUsuario, updateUsuario, buscarUsuario, buscarEmail, buscarUserName, generateJWT, getUsuario};
