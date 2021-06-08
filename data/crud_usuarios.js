@@ -102,8 +102,6 @@ async function getUsuario(username){
 //     return usuarios;
 // };
 
-/*                                  ¿Realmente se puede eliminar un usuario?
-
 async function deleteUsuario (id){
     const clientmongo = await connection.getConnection();
     const result = await clientmongo.db('test')
@@ -112,7 +110,7 @@ async function deleteUsuario (id){
     return result;
 };
 
-async function getUsuario(id){
+async function getUsuarioId(id){
     const clientmongo = await connection.getConnection();
     const usuario =  await clientmongo.db('test')
                                        .collection('usuarios')
@@ -120,6 +118,6 @@ async function getUsuario(id){
     return usuario;
 };
 
-*/
 
-module.exports = {addUsuario, updateUsuario, buscarUsuario, buscarEmail, buscarUserName, generateJWT, getUsuario};
+
+module.exports = {addUsuario, updateUsuario, buscarUsuario, buscarEmail, buscarUserName, generateJWT, getUsuario, deleteUsuario, getUsuarioId};
