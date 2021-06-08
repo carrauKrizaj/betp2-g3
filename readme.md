@@ -31,7 +31,8 @@ que deja dicho usuario.
 1. Hacer un Fork al repositorio de GitHub: https://github.com/carrauKrizaj/betp2-g3
 2. Clonar el repositorio localmente: no clonar el repo original, sino el que se generó luego del fork en tu propio repo.
 3. Instalar las dependencias; para eso, desde la consola de comando pararse sobre el directorio del repo y ejecutar el comando "npm install".
-4. Para ejecutar el programa, desde la consola de comando pararse sobre el directorio del repo y ejecutar el comando "npm run devstart".
+4. Agregar las variables de entorno (solicitarlas).
+5. Para ejecutar el programa, desde la consola de comando pararse sobre el directorio del repo y ejecutar el comando "npm run devstart".
 
 #Endpoints de la API
 
