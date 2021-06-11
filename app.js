@@ -3,12 +3,14 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const usuariosRouter = require('./routes/usuarios');
 const reviewsRouter = require('./routes/resenias');
 
 const app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/usuarios', usuariosRouter);
+app.use('/usuario', usuariosRouter);
 app.use('/api/reviews', reviewsRouter);
 
 
