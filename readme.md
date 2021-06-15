@@ -37,6 +37,7 @@ que deja dicho usuario.
 #Endpoints de la API
 
 - GET: '/' (http:/localhost:3000); Home.
+
 - GET: '/usuario/:username' (http:/localhost:3000/':username'); Buscador usuarios. 
 - POST: '/usuario/login' (http:/localhost:3000/login); Login.
 - POST: '/usuario/signup' (http:/localhost:3000/signup); Registrarse.
@@ -47,3 +48,5 @@ que deja dicho usuario.
 - GET: '/api/reviews/title-reviews/:id' (http:/localhost:3000/reviews/title-reviews/':id'); Busca reseñas por titulo.
 - PUT: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Modificar reseña.
 - DELETE: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Borrar reseña.
+- PUT: 'api/usuario/:id' (http://localhost:3000/usuarios/':id'); Actualizar usuario.
+- DELETE: 'api/usuario/:id' (http://localhost:3000/usuarios/':id'); Borrar usuario.
