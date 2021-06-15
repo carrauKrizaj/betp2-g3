@@ -37,9 +37,9 @@ que deja dicho usuario.
 #Endpoints de la API
 
 - GET: '/' (http:/localhost:3000); Home.
-- GET: '/usuarios/:nombre' (http:/localhost:3000/':nombre'); Buscador usuarios. 
-- POST: '/usuarios/login' (http:/localhost:3000/login); Login.
-- POST: '/usuarios/signup' (http:/localhost:3000/signup); Registrarse.
+- GET: '/usuario/:username' (http:/localhost:3000/':username'); Buscador usuarios. 
+- POST: '/usuario/login' (http:/localhost:3000/login); Login.
+- POST: '/usuario/signup' (http:/localhost:3000/signup); Registrarse.
 - GET: '/api/reviews' (http:/localhost:3000/reviews); Reseñas.
 - GET: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Buscador reseña.
 - POST: '/api/reviews' (http:/localhost:3000/reviews/); Agregar reseña.

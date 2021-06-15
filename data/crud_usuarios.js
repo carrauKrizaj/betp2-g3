@@ -89,7 +89,8 @@ async function getUsuario(username){
     const clientmongo = await connection.getConnection();
     const usuario =  await clientmongo.db('test')
                                        .collection('usuarios')
-                                       .findOne({username: username});
+                                       .find({ username: {'$regex': username}})
+                                       .toArray();
     return usuario;
 };
 
