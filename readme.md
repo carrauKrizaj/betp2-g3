@@ -37,15 +37,16 @@ que deja dicho usuario.
 #Endpoints de la API
 
 - GET: '/' (http:/localhost:3000); Home.
-- GET: '/usuarios/:nombre' (http://localhost:3000/':nombre'); Buscador usuarios. 
-- POST: '/usuarios/login' (http://localhost:3000/usuario/login); Login.
-- POST: '/usuarios/signup' (http://localhost:3000/usuario/signup); Registrarse.
-- GET: '/api/reviews' (http://localhost:3000/api/reviews); Reseñas.
-- GET: '/api/reviews/:id' (http://localhost:3000/api/reviews/':id'); Buscador reseña.
-- POST: '/api/reviews' (http://localhost:3000/api/reviews/); Agregar reseña.
-- GET: '/api/reviews/user-reviews/:id' (http://localhost:3000/api/reviews/user-reviews/':id'); Busca reseñas por usuario.
-- GET: '/api/reviews/title-reviews/:id' (http://localhost:3000/api/reviews/title-reviews/':id'); Busca reseñas por titulo.
-- PUT: '/api/reviews/:id' (http://localhost:3000/api/reviews/':id'); Modificar reseña.
-- DELETE: '/api/reviews/:id' (http://localhost:3000/api/reviews/':id'); Borrar reseña.
-- PUT: 'api/usuarios/:id' (http://localhost:3000/usuarios/':id'); Actualizar usuario.
-- DELETE: 'api/usuarios/:id' (http://localhost:3000/usuarios/':id'); Borrar usuario.
+
+- GET: '/usuario/:username' (http:/localhost:3000/':username'); Buscador usuarios. 
+- POST: '/usuario/login' (http:/localhost:3000/login); Login.
+- POST: '/usuario/signup' (http:/localhost:3000/signup); Registrarse.
+- GET: '/api/reviews' (http:/localhost:3000/reviews); Reseñas.
+- GET: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Buscador reseña.
+- POST: '/api/reviews' (http:/localhost:3000/reviews/); Agregar reseña.
+- GET: '/api/reviews/user-reviews/:id' (http:/localhost:3000/reviews/user-reviews/':id'); Busca reseñas por usuario.
+- GET: '/api/reviews/title-reviews/:id' (http:/localhost:3000/reviews/title-reviews/':id'); Busca reseñas por titulo.
+- PUT: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Modificar reseña.
+- DELETE: '/api/reviews/:id' (http:/localhost:3000/reviews/':id'); Borrar reseña.
+- PUT: 'api/usuario/:id' (http://localhost:3000/usuarios/':id'); Actualizar usuario.
+- DELETE: 'api/usuario/:id' (http://localhost:3000/usuarios/':id'); Borrar usuario.

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const axios = require('axios');
 
 //GET By ID or Title
@@ -6,7 +7,7 @@ const axios = require('axios');
     url: 'https://movie-database-imdb-alternative.p.rapidapi.com/',
     params: {i: 'tt1266020', r: 'json'},
     headers: {
-      'x-rapidapi-key': 'af67125161mshe02963b2dce7b50p162f53jsne1e573bdb96d',
+      'x-rapidapi-key': process.env.API_KEY,
       'x-rapidapi-host': 'movie-database-imdb-alternative.p.rapidapi.com'
     }
   };
@@ -24,7 +25,7 @@ parks and recreation: tt1266020
     url: 'https://movie-database-imdb-alternative.p.rapidapi.com/',
     params: {s: 'Avengers Endgame', page: '1', r: 'json'},
     headers: {
-      'x-rapidapi-key': 'af67125161mshe02963b2dce7b50p162f53jsne1e573bdb96d',
+      'x-rapidapi-key': process.env.API_KEY,
       'x-rapidapi-host': 'movie-database-imdb-alternative.p.rapidapi.com'
     }
   };
