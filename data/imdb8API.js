@@ -16,7 +16,7 @@ async function getPeliculas(movieName){
     await axios.request(options).then(function (response) {
         resultado = response.data.d
                             .filter(item => item.q === "feature")
-                            .map(item => ({foto:item.i, id:item.id, titulo: item.l, year: item.y}));
+                            .map(item => ({foto:item.i, id:item.id, titulo: item.l, anio: item.y}));
     }).catch(function (error) {
         console.error(error);
     });

@@ -16,7 +16,7 @@ router.get('/:username', async function (req, res) {
 
 /*
 router.get('/:id', async (req, res)=>{
-    const usuario = await dataUsuarios.getUsuario(req.params.id);
+    const usuario = await dataUsuarios.getUsuarioId(req.params.id);
     res.json(usuario);
 });
 */
@@ -58,8 +58,8 @@ router.put('/:id', async (req, res) => {
   let id = req.params.id;
   let usuario = req.body;
   usuario._id = id;
-  usuario = await dataUsuarios.updateUsuario(usuario);
-  res.json(await dataUsuarios.getUsuario(id));
+  await dataUsuarios.updateUsuario(usuario);
+  res.json(await dataUsuarios.getUsuarioId(id));
 });
 
 //DELETE
@@ -78,5 +78,20 @@ router.delete('/:id', auth, async (req, res) => {
 
 });
 
+//Añade una pelicula al array de titulos del usuario
+router.post('/add-pelicula/:idUsuario', async (req, res) => {
+  let idUsuario = req.params.idUsuario;
+  let pelicula = req.body;
+  await dataUsuarios.addPelicula(idUsuario, pelicula);
+  res.json(await dataUsuarios.getUsuarioId(idUsuario));
+});
+
+//Remueve una pelicula del array de titulos del usuario
+router.put('/remove-pelicula/:idUsuario/:idPelicula', async (req, res) => {
+  let idUsuario = req.params.idUsuario;
+  let idPelicula = req.params.idPelicula;
+  await dataUsuarios.removePelicula(idUsuario, idPelicula);
+  res.json(await dataUsuarios.getUsuarioId(idUsuario));
+});
 
 module.exports = router;
