@@ -146,6 +146,13 @@ async function removePelicula(idUsuario, peliculaId) {
 async function followUser(id, usuarioASeguir){
     const clientmongo = await connection.getConnection();
 
+    const usuarioEncontrado = await getUsuarioId(usuarioASeguir._id);
+    const yaSiguiendo = usuarioEncontrado.seguidores.find(user => user._id = id);
+
+    if(yaSiguiendo){
+        throw new Error('Usuario ya seguido');
+    }
+
     const query = { _id: new ObjectId(id) };
     const newValues = { $push: { "seguidos": usuarioASeguir } };
     await clientmongo.db('test').collection('usuarios').updateOne(query, newValues);
@@ -169,13 +176,11 @@ async function unfollowUser(idUsuarioLogueado, idUnfollowUser){
 
     const query = { _id: new ObjectId(idUsuarioLogueado) };
     const newValues = { $pull: { "seguidos": {_id: idUnfollowUser} } };
-    const result = await clientmongo.db('test').collection('usuarios').updateOne(query, newValues);
-    console.log(result);
+    await clientmongo.db('test').collection('usuarios').updateOne(query, newValues);
 
     const query2 = { _id: new ObjectId(idUnfollowUser) };
-    const newValues2 = { $pull: { "seguidores": {_id: idUsuarioLogueado} } };
-    const resultado = await clientmongo.db('test').collection('usuarios').updateOne(query2, newValues2);
-    console.log(resultado);
+    const newValues2 = { $pull: { "seguidores": query } };
+    await clientmongo.db('test').collection('usuarios').updateOne(query2, newValues2);
 };
 
 module.exports = { addUsuario, updateUsuario, buscarUsuario, buscarEmail, buscarUserName, generateJWT, getUsuario, 
