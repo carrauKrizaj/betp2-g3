@@ -8,6 +8,9 @@ async function addUsuario(usuario) {
     const clientmongo = await connection.getConnection();
 
     usuario.password = bcrypt.hashSync(usuario.password, 8);
+    usuario.titulos = [];
+    usuario.seguidores = [];
+    usuario.seguidos = [];
 
     const result = await clientmongo.db('test')
         .collection('usuarios')
@@ -140,4 +143,40 @@ async function removePelicula(idUsuario, peliculaId) {
     return result;
 };
 
-module.exports = { addUsuario, updateUsuario, buscarUsuario, buscarEmail, buscarUserName, generateJWT, getUsuario, deleteUsuario, getUsuarioId, addPelicula, removePelicula };
+async function followUser(id, usuarioASeguir){
+    const clientmongo = await connection.getConnection();
+
+    const query = { _id: new ObjectId(id) };
+    const newValues = { $push: { "seguidos": usuarioASeguir } };
+    await clientmongo.db('test').collection('usuarios').updateOne(query, newValues);
+
+    let aux = await getUsuarioId(id);
+
+    //con esto evito pasarle informacion personal del usuario
+    const usuarioSiguiendo = {
+        _id: aux._id,
+        username: aux.username,
+        titulos: aux.titulos
+    };
+
+    const query2 = { _id: new ObjectId(usuarioASeguir._id) };
+    const newValues2 = { $push: { "seguidores": usuarioSiguiendo } };
+    await clientmongo.db('test').collection('usuarios').updateOne(query2, newValues2);
+};
+
+async function unfollowUser(idUsuarioLogueado, idUnfollowUser){
+    const clientmongo = await connection.getConnection();
+
+    const query = { _id: new ObjectId(idUsuarioLogueado) };
+    const newValues = { $pull: { "seguidos": {_id: idUnfollowUser} } };
+    const result = await clientmongo.db('test').collection('usuarios').updateOne(query, newValues);
+    console.log(result);
+
+    const query2 = { _id: new ObjectId(idUnfollowUser) };
+    const newValues2 = { $pull: { "seguidores": {_id: idUsuarioLogueado} } };
+    const resultado = await clientmongo.db('test').collection('usuarios').updateOne(query2, newValues2);
+    console.log(resultado);
+};
+
+module.exports = { addUsuario, updateUsuario, buscarUsuario, buscarEmail, buscarUserName, generateJWT, getUsuario, 
+                    deleteUsuario, getUsuarioId, addPelicula, removePelicula, followUser, unfollowUser };

@@ -8,10 +8,9 @@ db.usuarios.insertMany([
         "email": "pepe@altavista.com",
         "username": "user1",
         "password": bcrypt.hashSync('password1', 8),
-        "titulos": 
-        [
-            
-        ]
+        "titulos": [],
+        "seguidores": [],
+        "seguidos": []
     },
     {
         "nombre": "Norberto",
@@ -19,10 +18,9 @@ db.usuarios.insertMany([
         "email": "pappo@blues.com",
         "username": "user2",
         "password": bcrypt.hashSync('password1', 8),
-        "titulos": 
-        [
-            
-        ]
+        "titulos": [],
+        "seguidores": [],
+        "seguidos": []
     },
     {
         "nombre": "Rick",
@@ -30,10 +28,9 @@ db.usuarios.insertMany([
         "email": "wabalaba@dubdub.com",
         "username": "user3",
         "password": bcrypt.hashSync('password1', 8),
-        "titulos": 
-        [
-            
-        ]
+        "titulos": [],
+        "seguidores": [],
+        "seguidos": []
     },
     {
         "nombre": "Pickle",
@@ -41,10 +38,9 @@ db.usuarios.insertMany([
         "email": "pickle@altavista.com",
         "username": "user4",
         "password": bcrypt.hashSync('password1', 8),
-        "titulos": 
-        [
-            
-        ]
+        "titulos": [],
+        "seguidores": [],
+        "seguidos": []
     },
     {
         "nombre": "Walter",
@@ -52,10 +48,9 @@ db.usuarios.insertMany([
         "email": "blue@magic.com",
         "username": "user5",
         "password": bcrypt.hashSync('password1', 8),
-        "titulos": 
-        [
-            
-        ]
+        "titulos": [],
+        "seguidores": [],
+        "seguidos": []
     },
     {
         "nombre": "Manu",
@@ -63,10 +58,9 @@ db.usuarios.insertMany([
         "email": "manu@spurs.com",
         "username": "user6",
         "password": bcrypt.hashSync('password1', 8),
-        "titulos": 
-        [
-            
-        ]
+        "titulos": [],
+        "seguidores": [],
+        "seguidos": []
     },
     {
         "nombre": "Juan",
@@ -74,10 +68,9 @@ db.usuarios.insertMany([
         "email": "topo@gmail.com",
         "username": "user7",
         "password": bcrypt.hashSync('password1', 8),
-        "titulos": 
-        [
-            
-        ]
+        "titulos": [],
+        "seguidores": [],
+        "seguidos": []
     },
     {
         "nombre": "Ron",
@@ -85,10 +78,9 @@ db.usuarios.insertMany([
         "email": "rons@pawnee.gov",
         "username": "user8",
         "password": bcrypt.hashSync('password1', 8),
-        "titulos": 
-        [
-            
-        ]
+        "titulos": [],
+        "seguidores": [],
+        "seguidos": []
     },
     {
         "nombre": "Groucho",
@@ -96,9 +88,8 @@ db.usuarios.insertMany([
         "email": "grouchom@spurs.com",
         "username": "user9",
         "password": bcrypt.hashSync('password1', 8),
-        "titulos": 
-        [
-            
-        ]
+        "titulos": [],
+        "seguidores": [],
+        "seguidos": []
     }
 ]);
