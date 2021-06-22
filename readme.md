@@ -10,7 +10,6 @@ que deja dicho usuario.
         Registrarse
         Buscar peliculas y series
         Agregarlas a su listado
-        Ponerles un estado (Completada, Pendiente, Abandonada, En Curso)
         Dejar una puntuacion
         Dejar una reseña
         Buscar Usuarios
