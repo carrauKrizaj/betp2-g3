@@ -98,8 +98,13 @@ router.put('/remove-pelicula/:idUsuario/:idPelicula', async (req, res) => {
 router.post('/follow/:id', async (req, res) => {
   let id = req.params.id;
   let usuarioASeguir = req.body;
-  await dataUsuarios.followUser(id, usuarioASeguir);
-  res.json(await dataUsuarios.getUsuarioId(id));
+  try{
+    await dataUsuarios.followUser(id, usuarioASeguir);
+    res.json(await dataUsuarios.getUsuarioId(id));
+  }catch(error){
+    res.send(error.message);
+  }
+
 });
 
 //Remueve un usuario de la lista de seguidos del usuario logueado
