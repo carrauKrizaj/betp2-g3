@@ -94,4 +94,20 @@ router.put('/remove-pelicula/:idUsuario/:idPelicula', async (req, res) => {
   res.json(await dataUsuarios.getUsuarioId(idUsuario));
 });
 
+//Agrega un usuario a la lista de seguidos del usuario logueado
+router.post('/follow/:id', async (req, res) => {
+  let id = req.params.id;
+  let usuarioASeguir = req.body;
+  await dataUsuarios.followUser(id, usuarioASeguir);
+  res.json(await dataUsuarios.getUsuarioId(id));
+});
+
+//Remueve un usuario de la lista de seguidos del usuario logueado
+router.put('/unfollow/:idUsuarioLogueado/:idUnfollowUser', async (req, res) => {
+  let idUsuarioLogueado = req.params.idUsuarioLogueado;
+  let idUnfollowUser = req.params.idUnfollowUser;
+  await dataUsuarios.unfollowUser(idUsuarioLogueado, idUnfollowUser);
+  res.json(await dataUsuarios.getUsuarioId(idUsuarioLogueado));
+});
+
 module.exports = router;
