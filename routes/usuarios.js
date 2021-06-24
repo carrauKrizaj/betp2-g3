@@ -25,10 +25,8 @@ router.get('/:id', async (req, res)=>{
 router.post('/login', async (req, res) => {
   try {
     const usuario = await dataUsuarios.buscarUsuario(req.body.email, req.body.password);
-    console.log(usuario);
     const token = await dataUsuarios.generateJWT(usuario);
-    res.send({ usuario, token });
-
+    res.json({ usuario, token });
   } catch (error) {
     res.status(401).send(error.message);
   }
@@ -42,8 +40,9 @@ router.post('/signup', async (req, res) => {
     let userNameEncontrado = await dataUsuarios.buscarUserName(req.body.username);
 
     if (!emailEncontrado && !userNameEncontrado) {  //si esta vacio, no encontro nada
-      usuario = await dataUsuarios.addUsuario(usuario);
-      res.json(usuario);
+      await dataUsuarios.addUsuario(usuario);
+      const token = await dataUsuarios.generateJWT(usuario);
+      res.json({ usuario, token });
     }
 
   } catch (error) { //tira error de email/username existente
