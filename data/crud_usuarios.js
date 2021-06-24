@@ -54,7 +54,7 @@ async function buscarUsuario(email, password) {
     const usuario = await clientmongo.db('test')
         .collection('usuarios')
         .findOne({ email: email });
-    console.log('Usuario', usuario);
+    
     if (!usuario) {
         throw new Error('Datos inválidos');
     }
