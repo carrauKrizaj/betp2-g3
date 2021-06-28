@@ -18,7 +18,6 @@ que deja dicho usuario.
 #Actores/Roles
 
 - Usuario
-- Moderador (?)
 
 #Entidades principales
 
