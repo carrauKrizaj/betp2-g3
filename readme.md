@@ -1,6 +1,6 @@
 #Descripcion
 
-Una aplicacion para armar listado de las peliculas y series que queres ver o ya viste y te permite dejarle una puntuacion y reseña. Podes seguir otro usuario si te gustan las reseñas
+Una aplicacion para armar listado de las peliculas que queres ver o ya viste y te permite dejarle una puntuacion y reseña. Podes seguir otro usuario si te gustan las reseñas
 que deja dicho usuario.
 
 #Funcionalidades
@@ -8,9 +8,8 @@ que deja dicho usuario.
     El usuario puede:
 
         Registrarse
-        Buscar peliculas y series
+        Buscar peliculas
         Agregarlas a su listado
-        Ponerles un estado (Completada, Pendiente, Abandonada, En Curso)
         Dejar una puntuacion
         Dejar una reseña
         Buscar Usuarios
@@ -36,10 +35,16 @@ que deja dicho usuario.
 
 #Endpoints de la API
 
-- GET: '/' (http:/localhost:3000); Home.
-- GET: '/usuario/:username' (localhost:3000/':username'); Buscador usuarios. 
-- POST: '/usuario/login' (localhost:3000/login); Login.
-- POST: '/usuario/signup' (localhost:3000/signup); Registrarse.
+- GET: '/'; Home.
+- GET: '/usuario/:username'; Buscador usuarios. 
+- POST: '/usuario/login'; Login.
+- POST: '/usuario/signup'; Registrarse.
+- PUT: '/usuario/:id'; Actualizar usuario.
+- DELETE: '/usuario/:id'; Borrar usuario.
+- POST: '/usuario/add-pelicula/:idUsuario'; Agregar pelicula a la lista de titulos del usuario.
+- PUT: '/usuario/remove-pelicula/:idUsuario/:idPelicula'; Remueve pelicula de la lista de titulos del usuario.
+- POST: '/usuario/follow/:id'; Agrega un usuario a la lista de seguidos del usuario.
+- PUT: '/usuario/unfollow/:idUsuarioLogueado/:idUnfollowUser'; Remueve un usuario de la lista de seguidos del usuario logueado.
 - GET: '/api/reviews' (localhost:3000/reviews); Reseñas.
 - GET: '/api/reviews/:id' (localhost:3000/reviews/':id'); Buscador reseña.
 - POST: '/api/reviews' (localhost:3000/reviews/); Agregar reseña.
@@ -47,5 +52,6 @@ que deja dicho usuario.
 - GET: '/api/reviews/title-reviews/:id' (localhost:3000/reviews/title-reviews/':id'); Busca reseñas por titulo.
 - PUT: '/api/reviews/:id' (localhost:3000/reviews/':id'); Modificar reseña.
 - DELETE: '/api/reviews/:id' (localhost:3000/reviews/':id'); Borrar reseña.
-- PUT: 'api/usuario/:id' (localhost:3000/usuario/':id'); Actualizar usuario.
-- DELETE: 'api/usuario/:id' (localhost:3000/usuario/':id'); Borrar usuario.
+- GET: '/api/peliculas/:movieName'; Devuelve una lista de peliculas con similitud al nombre enviado en la request.
+
+Los endpoints se pueden testear a través de este link: https://obscure-thicket-15756.herokuapp.com/
