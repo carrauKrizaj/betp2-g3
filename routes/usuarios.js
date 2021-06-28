@@ -36,6 +36,13 @@ router.post('/login', async (req, res) => {
 router.post('/signup', async (req, res) => {
   try {
     let usuario = req.body;
+
+    dataUsuarios.checkEmail(usuario.email);
+    dataUsuarios.checkName(usuario.nombre);
+    dataUsuarios.checkName(usuario.apellido);
+    dataUsuarios.checkStringLength(usuario.username);
+    dataUsuarios.checkStringLength(usuario.password);
+
     let emailEncontrado = await dataUsuarios.buscarEmail(req.body.email); //busca si existe el mail
     let userNameEncontrado = await dataUsuarios.buscarUserName(req.body.username);
 
@@ -53,12 +60,24 @@ router.post('/signup', async (req, res) => {
 
 //Consultar lo de la ID y getUsuario
 router.put('/:id', async (req, res) => {
-  //validacion pendiente 
-  let id = req.params.id;
-  let usuario = req.body;
-  usuario._id = id;
-  await dataUsuarios.updateUsuario(usuario);
-  res.json(await dataUsuarios.getUsuarioId(id));
+  try {
+    let id = req.params.id;
+    let usuario = req.body;
+
+    dataUsuarios.checkEmail(usuario.email);
+    dataUsuarios.checkName(usuario.nombre);
+    dataUsuarios.checkName(usuario.apellido);
+    dataUsuarios.checkStringLength(usuario.username);
+    dataUsuarios.checkStringLength(usuario.password);
+
+    usuario._id = id;
+    await dataUsuarios.updateUsuario(usuario);
+    res.json(await dataUsuarios.getUsuarioId(id));
+
+  } catch (error) {
+    res.send(error.message);
+  }
+
 });
 
 //DELETE
@@ -97,10 +116,10 @@ router.put('/remove-pelicula/:idUsuario/:idPelicula', async (req, res) => {
 router.post('/follow/:id', async (req, res) => {
   let id = req.params.id;
   let usuarioASeguir = req.body;
-  try{
+  try {
     await dataUsuarios.followUser(id, usuarioASeguir);
     res.json(await dataUsuarios.getUsuarioId(id));
-  }catch(error){
+  } catch (error) {
     res.send(error.message);
   }
 

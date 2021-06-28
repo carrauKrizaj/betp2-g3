@@ -3,6 +3,7 @@ const connection = require('./connection');
 let ObjectId = require('mongodb').ObjectId;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const validator = require('validator');
 
 async function addUsuario(usuario) {
     const clientmongo = await connection.getConnection();
@@ -17,6 +18,24 @@ async function addUsuario(usuario) {
         .insertOne(usuario);
     return result;
 };
+
+function checkEmail(email){
+    if (!validator.isEmail(email)){
+        throw new Error('Email invalido');
+    }
+}
+
+function checkName(name){
+    if (!validator.isAlpha(name)){
+        throw new Error('El nombre o apellido tienen caracteres no validos');
+    }
+}
+
+function checkStringLength(string){
+    if (!validator.isLength(string, { min: 6, max: 20 })){
+        throw new Error('El usuario/contraseña debe contener minimo 6 caracteres y maximo 20');
+    }
+}
 
 async function buscarEmail(email) {
     const clientmongo = await connection.getConnection();
@@ -184,4 +203,5 @@ async function unfollowUser(idUsuarioLogueado, idUnfollowUser){
 };
 
 module.exports = { addUsuario, updateUsuario, buscarUsuario, buscarEmail, buscarUserName, generateJWT, getUsuario, 
-                    deleteUsuario, getUsuarioId, addPelicula, removePelicula, followUser, unfollowUser };
+                    deleteUsuario, getUsuarioId, addPelicula, removePelicula, followUser, unfollowUser, checkEmail,
+                    checkName, checkStringLength };
