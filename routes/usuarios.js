@@ -45,7 +45,7 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-//Consultar lo de la ID y getUsuario
+//Modificar usuario
 router.put('/:id', async (req, res) => {
   try {
     let id = req.params.id;
