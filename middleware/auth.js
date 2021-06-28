@@ -9,6 +9,6 @@ function auth(req, res, next){
     } catch (error) {
         res.status(401).send({error: error.message});
     }
-}
+};
 
 module.exports = auth;
