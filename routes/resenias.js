@@ -4,9 +4,7 @@ const dataResenias = require('../data/crud_resenias');
 
 //AGREGAR RESEÑA
 router.post('/', async (req, res)=>{
-    //Averiguar como hacer la validacion correctamente
     let review = req.body;
-
     review = await dataResenias.addResenia(review);
     res.json(review);
 });
@@ -37,7 +35,6 @@ router.get('/title-reviews/:id', async (req, res)=>{
 
 //ACTUALIZAR RESEÑA
 router.put('/:id', async (req, res)=>{
-    //Averiguar como hacer la validacion correctamente
     let id = req.params.id;
     let review = req.body;
     review._id = id;
