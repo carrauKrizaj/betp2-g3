@@ -150,7 +150,7 @@ async function followUser(id, usuarioASeguir){
     const clientmongo = await connection.getConnection();
 
     const usuarioEncontrado = await getUsuarioId(usuarioASeguir._id);
-    const yaSiguiendo = usuarioEncontrado.seguidores.find(user => user._id = id);
+    const yaSiguiendo = usuarioEncontrado.seguidores.find(user => user._id == id);
 
     if(yaSiguiendo){
         throw new Error('Usuario ya seguido');
